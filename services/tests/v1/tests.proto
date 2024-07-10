@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package services.tests.v1;
+
+option go_package = "github.com/alexongh/connect-query-protobuf/gen/go/services/tests/v1";
+
+message ViewRequest {}
+
+message ViewResponse {
+    string name = 1;
+}
+
+service TestService {
+    rpc View(ViewRequest) returns (ViewResponse) {
+        option idempotency_level = NO_SIDE_EFFECTS;
+    }
+}
+
